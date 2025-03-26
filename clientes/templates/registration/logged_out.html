@@ -1,0 +1,5 @@
+{% extends "base.html" %}  <!-- Si tienes una plantilla base -->
+{% block content %}
+<h1>Has cerrado sesión</h1>
+<p><a href="{% url 'login' %}">Iniciar Sesión nuevamente</a></p>
+{% endblock %}

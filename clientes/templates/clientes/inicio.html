@@ -1,0 +1,15 @@
+{% extends 'clientes/base.html' %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="display-4">Bienvenido a la Gestión de Clientes</h1>
+    <p class="lead">Una solución empresarial para gestionar tus clientes de manera eficiente.</p>
+
+    <!-- Mostrar el botón "Ver Clientes" solo si el usuario está autenticado -->
+    {% if user.is_authenticated %}
+        <a href="{% url 'lista_clientes' %}" class="btn btn-primary btn-lg">Ver Clientes</a>
+    {% else %}
+        <p>Inicia sesión para acceder a la lista de clientes.</p>
+    {% endif %}
+</div>
+{% endblock %}
