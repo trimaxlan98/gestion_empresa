@@ -126,9 +126,49 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'lista_clientes'  # Redirige a la lista de clientes después del inicio de sesión
 LOGOUT_REDIRECT_URL = 'inicio'         # Redirige a la página de inicio después del cierre de sesión
 
+# Configuración de correo
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.tuservidor.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'tucorreo@ejemplo.com'
+EMAIL_HOST_PASSWORD = 'tucontraseña'
+DEFAULT_FROM_EMAIL = 'Gestión de Clientes <tucorreo@ejemplo.com>'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',  # Ruta a la base de datos SQLite
     }
 }
+
+# Añadir al final de gestion_empresa/settings.py
+
+# Configuración de correo electrónico
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.tuservidor.com'  # Cambia esto por tu servidor SMTP
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'contact@freted.info'  # Cambia esto por tu correo
+EMAIL_HOST_PASSWORD = '1234567890'  # Cambia esto por tu contraseña
+DEFAULT_FROM_EMAIL = 'Gestión de Clientes <contact@freted.info>'
+
+# Para entornos de desarrollo, puedes usar este backend que muestra los correos en la consola
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Configuración para archivos de medios
+import os
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Enlaces de redirección para autenticación
+LOGIN_URL = 'login'
+
+# Añadir a gestion_empresa/settings.py
+
+# Configuración para archivos estáticos
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

@@ -1,0 +1,143 @@
+/* Guardar como clientes/static/css/custom.css */
+
+/* Estilos para los formularios de autenticación */
+.form-control {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Asegurar que los elementos p dentro de formularios se vean bien */
+form p {
+    margin-bottom: 1rem;
+}
+
+form p label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+form p input, form p select, form p textarea {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.errorlist {
+    color: #dc3545;
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 0.5rem;
+}
+
+/* Estilos para mensajes de ayuda */
+.form-text {
+    color: #6c757d;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Estilos para los enlaces */
+.card a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.card a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Estilos para mensajes de alerta */
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+/* Estilo para los botones de recuperación de contraseña */
+.btn-password-reset {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-password-reset:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+/* Estilos específicos para la página de recuperación de contraseña */
+.password-reset-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+.password-reset-card .card-header {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.password-reset-card .card-footer {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Mejoras en la visualización de campos de formulario con errores */
+input.is-invalid, select.is-invalid, textarea.is-invalid {
+    border-color: #dc3545;
+}
+
+input.is-invalid:focus, select.is-invalid:focus, textarea.is-invalid:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Estilos para adaptar a móviles */
+@media (max-width: 576px) {
+    .card {
+        border: none;
+        box-shadow: none;
+    }
+    
+    .card-body {
+        padding: 1rem 0;
+    }
+}

@@ -1,5 +1,16 @@
-{% extends "base.html" %}  <!-- Si tienes una plantilla base -->
+# Guardar como clientes/templates/registration/logged_out.html
+{% extends 'clientes/base.html' %}
+
 {% block content %}
-<h1>Has cerrado sesión</h1>
-<p><a href="{% url 'login' %}">Iniciar Sesión nuevamente</a></p>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body text-center">
+                <h1 class="card-title">Has cerrado sesión</h1>
+                <p>Gracias por usar nuestro sistema de gestión de clientes.</p>
+                <a href="{% url 'login' %}" class="btn btn-primary">Iniciar Sesión nuevamente</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

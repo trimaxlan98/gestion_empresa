@@ -1,9 +1,11 @@
+# Modificaciones para clientes/views.py
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib import messages  # Importar mensajes
 from .models import Cliente
-from .forms import ClienteForm
+from .forms import ClienteForm, RegistroForm
 
 # Vista para la página de inicio
 def inicio(request):
@@ -12,13 +14,16 @@ def inicio(request):
 # Vista para registrar un nuevo usuario (gerente)
 def registrar(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegistroForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)  # Inicia sesión automáticamente después del registro
-            return redirect('inicio')  # Redirige a la página de inicio
+            login(request, user)
+            messages.success(request, "¡Registro exitoso! Bienvenido.")
+            return redirect('inicio')
+        else:
+            messages.error(request, "Por favor corrige los errores en el formulario.")
     else:
-        form = UserCreationForm()
+        form = RegistroForm()
     return render(request, 'clientes/registrar.html', {'form': form})
 
 # Vista para iniciar sesión
@@ -31,7 +36,12 @@ def iniciar_sesion(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
+                messages.success(request, f"Bienvenido de nuevo, {username}!")
                 return redirect('inicio')  # Redirige a la página de inicio
+            else:
+                messages.error(request, "Usuario o contraseña incorrectos.")
+        else:
+            messages.error(request, "Usuario o contraseña incorrectos.")
     else:
         form = AuthenticationForm()
     return render(request, 'clientes/iniciar_sesion.html', {'form': form})
@@ -39,6 +49,7 @@ def iniciar_sesion(request):
 # Vista para cerrar sesión
 def cerrar_sesion(request):
     logout(request)
+    messages.success(request, "Has cerrado sesión correctamente.")
     return redirect('inicio')  # Redirige a la página de inicio
 
 # Vista para listar los clientes (solo para gerentes autenticados)
@@ -56,7 +67,10 @@ def agregar_cliente(request):
             cliente = form.save(commit=False)
             cliente.gerente = request.user  # Asigna el gerente actual al cliente
             cliente.save()
+            messages.success(request, "¡Cliente agregado con éxito!")
             return redirect('lista_clientes')  # Redirige a la lista de clientes
+        else:
+            messages.error(request, "Por favor corrige los errores en el formulario.")
     else:
         form = ClienteForm()
     return render(request, 'clientes/agregar_cliente.html', {'form': form})
@@ -69,7 +83,10 @@ def editar_cliente(request, id):
         form = ClienteForm(request.POST, request.FILES, instance=cliente)
         if form.is_valid():
             form.save()
+            messages.success(request, "¡Cliente actualizado con éxito!")
             return redirect('lista_clientes')
+        else:
+            messages.error(request, "Por favor corrige los errores en el formulario.")
     else:
         form = ClienteForm(instance=cliente)
     return render(request, 'clientes/editar_cliente.html', {'form': form})
