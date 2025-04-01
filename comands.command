@@ -1,4 +1,4 @@
-python -m PyInstaller --name="GestionClientes" --onedir --windowed \
+python3 -m PyInstaller --name="GestionClientes" --onedir --windowed \
     --add-data "clientes/templates:clientes/templates" \
     --add-data "clientes/static:clientes/static" \
     --hidden-import=django.contrib.admin \
