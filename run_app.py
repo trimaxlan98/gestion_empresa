@@ -1,4 +1,4 @@
-# run_app.py
+# run_app.py para Mac (similar al de Windows)
 import os
 import sys
 import webbrowser
@@ -16,13 +16,12 @@ PORT = 8000
 
 def open_browser():
     """Abre el navegador después de un corto retraso"""
-    time.sleep(1.5)  # Esperar a que el servidor esté completamente iniciado
+    time.sleep(1.5)
     webbrowser.open(f'http://localhost:{PORT}')
 
 if __name__ == '__main__':
     # Información de inicio
     print(f"Iniciando Gestión de Clientes en http://{HOST}:{PORT}")
-    print("Presiona Ctrl+C para detener el servidor")
     
     # Abrir el navegador automáticamente
     threading.Thread(target=open_browser).start()
